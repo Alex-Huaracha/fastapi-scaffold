@@ -1,0 +1,15 @@
+[project]
+name = "fastapi-scaffold"
+version = "0.1.0"
+description = "Fastapi scaffold"
+readme = "README.md"
+authors = [
+    { name = "Alex Huaracha", email = "129701149+Alex-Huaracha@users.noreply.github.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi[standard]>=0.141.1",
+]
+
+# [project.scripts]
+# fastapi-scaffold = "fastapi_scaffold:main"
