@@ -7,10 +7,6 @@ from app.core.config import settings
 
 DATABASE_URL = str(settings.DATABASE_URL)
 
-# Correct the database URL if it starts with "postgresql://"
-if DATABASE_URL.startswith("postgresql://"):
-    DATABASE_URL = DATABASE_URL.replace("postgresql://", "postgresql+asyncpg://", 1)
-
 engine = create_async_engine(DATABASE_URL, echo=True)
 
 async_session_maker = async_sessionmaker(
