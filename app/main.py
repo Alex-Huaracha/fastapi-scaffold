@@ -5,8 +5,11 @@ from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.database import get_db
+from app.modules.user.router import router as user_router
 
 app = FastAPI()
+
+app.include_router(user_router, prefix="/users", tags=["users"])
 
 
 @app.get("/health")
