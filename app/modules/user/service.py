@@ -11,7 +11,7 @@ from app.modules.user.exceptions import (
     UsernameAlreadyRegistered,
     UserNotFound,
 )
-from app.modules.user.schemas import UserCreate
+from app.modules.user.schemas import UserCreate, UserUpdate
 
 
 async def create(session: AsyncSession, data: UserCreate) -> models.User:
@@ -51,3 +51,22 @@ async def get_by_id(session: AsyncSession, user_id: uuid.UUID) -> models.User:
 
     return user
 
+
+async def update(
+    session: AsyncSession, user: models.User, data: UserUpdate
+) -> models.User:
+    values = data.model_dump(exclude_unset=True)
+
+    if "email" in values:
+        values["email"] = values["email"].lower()
+
+    for field, value in values.items():
+        setattr(user, field, value)
+
+    try:
+        await session.commit()
+    except IntegrityError as exc:
+        await session.rollback()
+        raise UserAlreadyExists from exc
+
+    return user
