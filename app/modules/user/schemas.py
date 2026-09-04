@@ -17,8 +17,8 @@ class UserCreate(UserBase):
 class UserUpdate(BaseModel):
     username: str | None = Field(default=None, min_length=3, max_length=30)
     email: EmailStr | None = Field(default=None, max_length=100)
-    name: str | None = Field(default=None, min_length=1, max_length=30)
-    last_name: str | None = Field(default=None, min_length=1, max_length=30)
+    name: str | None = Field(default=None, min_length=3, max_length=30)
+    last_name: str | None = Field(default=None, min_length=3, max_length=30)
 
 
 class UserPublic(BaseModel):

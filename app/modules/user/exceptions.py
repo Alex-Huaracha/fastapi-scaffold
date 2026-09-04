@@ -21,3 +21,8 @@ class UserAlreadyExists(AppError):
 class UserNotFound(AppError):
     status_code = status.HTTP_404_NOT_FOUND
     detail = "User not found"
+
+
+class UserInUse(AppError):
+    status_code = status.HTTP_409_CONFLICT
+    detail = "User cannot be deleted because it is referenced by other records"
