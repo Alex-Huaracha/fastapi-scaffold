@@ -1,12 +1,21 @@
+from contextlib import asynccontextmanager
+
 from fastapi import FastAPI, HTTPException, Request, status
 from fastapi.responses import JSONResponse
 from sqlalchemy import text
 
-from app.core.database import SessionDep
+from app.core.database import SessionDep, engine
 from app.core.exceptions import AppError
 from app.modules.user.router import router as user_router
 
-app = FastAPI()
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    yield
+    await engine.dispose()
+
+
+app = FastAPI(lifespan=lifespan)
 
 app.include_router(user_router, prefix="/users", tags=["users"])
 

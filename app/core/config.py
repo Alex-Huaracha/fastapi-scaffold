@@ -10,6 +10,7 @@ class Settings(BaseSettings):
     )
 
     DATABASE_URL: PostgresDsn
+    DB_ECHO: bool = False
 
 
 settings = Settings()  # type: ignore[call-arg] # Loaded from .env file
