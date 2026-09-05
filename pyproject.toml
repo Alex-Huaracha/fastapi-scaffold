@@ -15,5 +15,12 @@ dependencies = [
     "sqlalchemy>=2.0.52",
 ]
 
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+    "pytest-asyncio>=1.4.0",
+    "ruff>=0.16.6",
+]
+
 # [project.scripts]
 # fastapi-scaffold = "fastapi_scaffold:main"
