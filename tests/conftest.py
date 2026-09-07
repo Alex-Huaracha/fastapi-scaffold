@@ -2,9 +2,8 @@ import os
 from collections.abc import AsyncGenerator
 
 os.environ["DATABASE_URL"] = (
-    "postgresql+asyncpg://postgres:postgres@localhost:5433/postgres_db_test"
+    "postgresql+asyncpg://postgres:postgres@localhost:5434/postgres_db_test"
 )
-os.environ["ENVIRONMENT"] = "test"
 
 import pytest
 from httpx import ASGITransport, AsyncClient
