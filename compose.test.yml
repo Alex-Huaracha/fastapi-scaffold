@@ -1,4 +1,15 @@
+name: fastapi-scaffold-test
+
 services:
+  test:
+    build: .
+    command: uv run pytest -v
+    environment:
+      DATABASE_URL: postgresql+asyncpg://postgres:postgres@db-test:5432/postgres_db_test
+    depends_on:
+      db-test:
+        condition: service_healthy
+
   db-test:
     image: docker.io/library/postgres:18
     environment:

@@ -1,8 +1,9 @@
 import os
 from collections.abc import AsyncGenerator
 
-os.environ["DATABASE_URL"] = (
-    "postgresql+asyncpg://postgres:postgres@localhost:5434/postgres_db_test"
+os.environ.setdefault(
+    "DATABASE_URL",
+    "postgresql+asyncpg://postgres:postgres@localhost:5434/postgres_db_test",
 )
 
 import pytest
