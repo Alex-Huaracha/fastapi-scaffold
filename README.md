@@ -71,9 +71,9 @@ uv run pytest -v
 The suite runs in about 0.2s. `conftest.py` falls back to that database when
 `DATABASE_URL` is not set, and respects it when Docker or CI injects one.
 
-| Command | Purpose |
+| Purpose | Command |
 |---|---|
-| `uv run pytest -v` | Run the suite |
-| `uv run ruff check .` | Lint |
-| `uv run alembic revision --autogenerate -m "..."` | Create a migration |
-| `uv run alembic check` | Fail if models drifted from migrations |
+| Run the suite | `uv run pytest -v` |
+| Lint | `uv run ruff check .` |
+| Create a migration | `uv run alembic revision --autogenerate -m "..."` |
+| Fail if models drifted from migrations | `uv run alembic check` |
