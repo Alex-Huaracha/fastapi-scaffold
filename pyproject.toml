@@ -19,8 +19,12 @@ dependencies = [
 dev = [
     "pytest>=9.1.1",
     "pytest-asyncio>=1.4.0",
+    "pytest-cov>=7.1.0",
     "ruff>=0.16.6",
 ]
+
+[tool.ruff]
+exclude = ["alembic"]
 
 [tool.pytest.ini_options]
 asyncio_mode = "auto"
@@ -28,6 +32,9 @@ asyncio_default_fixture_loop_scope = "session"
 asyncio_default_test_loop_scope = "session"
 testpaths = ["tests"]
 
+[tool.coverage.run]
+source = ["app"]
+concurrency = ["greenlet", "thread"]
 
 # [project.scripts]
 # fastapi-scaffold = "fastapi_scaffold:main"

@@ -1,6 +1,6 @@
 # FastAPI Scaffold
 
-[![CircleCI](https://dl.circleci.com/status-badge/img/gh/Alex-Huaracha/fastapi-scaffold/tree/main.svg?style=shield)](https://dl.circleci.com/status-badge/redirect/gh/Alex-Huaracha/fastapi-scaffold/tree/main)
+[![CI](https://github.com/Alex-Huaracha/fastapi-scaffold/actions/workflows/ci.yml/badge.svg)](https://github.com/Alex-Huaracha/fastapi-scaffold/actions/workflows/ci.yml)
 [![codecov](https://codecov.io/gh/Alex-Huaracha/fastapi-scaffold/branch/main/graph/badge.svg)](https://codecov.io/gh/Alex-Huaracha/fastapi-scaffold)
 
 A production-shaped starting point for a FastAPI service: async SQLAlchemy 2.0 over

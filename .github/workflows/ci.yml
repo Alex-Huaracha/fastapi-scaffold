@@ -1,0 +1,49 @@
+name: CI
+
+on: 
+  push:
+    branches: [main]
+  pull_request:
+  
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:18
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: postgres_db_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres"
+          --health-interval 2s
+          --health-timeout 2s
+          --health-retries 15
+
+    env:
+      DATABASE_URL: postgresql+asyncpg://postgres:postgres@localhost:5432/postgres_db_test
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: astral-sh/setup-uv@v10
+        with: 
+          enable-cache: true
+      
+      - run: uv sync --locked
+
+      - name: Lint
+        run: uv run ruff check .
+
+      - name: Test
+        run: uv run pytest -v --cov=app --cov-report=xml --cov-report=term-missing
+
+      - name: Migrations match models
+        run: |
+          uv run alembic upgrade head
+          uv run alembic check
+
+      - uses: codecov/codecov-action@v5
