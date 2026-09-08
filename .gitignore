@@ -9,6 +9,13 @@ wheels/
 # Virtual environments
 .venv
 
+# Test and coverage artifacts
+.pytest_cache/
+.ruff_cache/
+htmlcov/
+.coverage
+coverage.xml
+
 # Environment variables
 .env
 
