@@ -1,0 +1,12 @@
+services:
+  - type: web
+    plan: free
+    name: fastapi-scaffold
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /health
+    envVars:
+      - key: DATABASE_URL
+        value: ""
+        sync: false
