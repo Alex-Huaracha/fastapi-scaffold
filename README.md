@@ -27,13 +27,7 @@ Docker. Nothing else.
 ```
 
 Builds the image, starts a throwaway PostgreSQL, runs the suite inside a container and
-removes everything afterwards. Expected output:
-
-```
-============================== 13 passed in 0.14s ==============================
-```
-
-The script exits with pytest's exit code, so CI reports a real pass or fail.
+removes everything afterwards. The script exits with pytest's exit code.
 
 ## Run the API
 

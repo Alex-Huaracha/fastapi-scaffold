@@ -1,4 +1,5 @@
 import uuid
+from datetime import datetime
 
 from httpx import AsyncClient
 
@@ -78,6 +79,19 @@ async def test_update_user_normalizes_email(client: AsyncClient):
 
     assert response.status_code == 200
     assert response.json()["email"] == "renamed@example.com"
+
+
+async def test_update_user_touches_updated_at(client: AsyncClient):
+    created = await create_user(client)
+
+    response = await client.patch(f"/users/{created['id']}", json={"name": "Renamed"})
+
+    assert response.status_code == 200
+    body = response.json()
+    assert body["created_at"] == created["created_at"]
+    assert datetime.fromisoformat(body["updated_at"]) > datetime.fromisoformat(
+        created["updated_at"]
+    )
 
 
 async def test_update_user_rejects_short_name(client: AsyncClient):

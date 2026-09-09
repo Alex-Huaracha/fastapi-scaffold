@@ -1,4 +1,5 @@
 import uuid
+from datetime import datetime
 
 from pydantic import BaseModel, ConfigDict, EmailStr, Field
 
@@ -29,3 +30,5 @@ class UserPublic(BaseModel):
     email: EmailStr
     name: str
     last_name: str
+    created_at: datetime
+    updated_at: datetime
