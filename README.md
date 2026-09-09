@@ -30,7 +30,7 @@ Builds the image, starts a throwaway PostgreSQL, runs the suite inside a contain
 removes everything afterwards. Expected output:
 
 ```
-============================== 12 passed in 0.14s ==============================
+============================== 13 passed in 0.14s ==============================
 ```
 
 The script exits with pytest's exit code, so CI reports a real pass or fail.

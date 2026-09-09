@@ -69,6 +69,17 @@ async def test_update_user_changes_only_sent_fields(client: AsyncClient):
     assert body["email"] == created["email"]
 
 
+async def test_update_user_normalizes_email(client: AsyncClient):
+    created = await create_user(client)
+
+    response = await client.patch(
+        f"/users/{created['id']}", json={"email": "Renamed@Example.COM"}
+    )
+
+    assert response.status_code == 200
+    assert response.json()["email"] == "renamed@example.com"
+
+
 async def test_update_user_rejects_short_name(client: AsyncClient):
     created = await create_user(client)
 
