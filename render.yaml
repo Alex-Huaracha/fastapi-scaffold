@@ -8,5 +8,4 @@ services:
     healthCheckPath: /health
     envVars:
       - key: DATABASE_URL
-        value: ""
         sync: false
