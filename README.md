@@ -7,6 +7,14 @@ A production-shaped starting point for a FastAPI service: async SQLAlchemy 2.0 o
 PostgreSQL, Alembic migrations, a paginated CRUD module, domain exceptions mapped to
 HTTP responses, and an integration test suite that runs against a real database.
 
+## Live API
+
+- Interactive docs: https://fastapi-scaffold.onrender.com/docs
+- Health check: https://fastapi-scaffold.onrender.com/health
+
+Running on Render's free tier against a Neon database. The first request after 15
+minutes of inactivity takes about a minute while the service wakes up.
+
 ## Stack
 
 - FastAPI
